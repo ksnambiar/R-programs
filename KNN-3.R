@@ -1,4 +1,4 @@
-dataset <- read.csv("D:\\sidharth\\R\\Raction\\Defaulter.csv", header = TRUE, quote="\"", stringsAsFactors= TRUE, strip.white = TRUE)
+dataset <- read.csv("D:\\sidharth\\R\\test\\Defaulter.csv", header = TRUE, quote="\"", stringsAsFactors= TRUE, strip.white = TRUE)
 print(dataset)
 K = 4
 Age = dataset[,1]
