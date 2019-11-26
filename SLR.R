@@ -1,4 +1,4 @@
-dataset <- read.csv("D:\\sidharth\\R\\Advertising.csv", header = TRUE, quote="\"", stringsAsFactors= TRUE, strip.white = TRUE)
+dataset <- read.csv("D:\\sidharth\\R\\test\\Advertising.csv", header = TRUE, quote="\"", stringsAsFactors= TRUE, strip.white = TRUE)
 print(dataset)
 #using predefined function
 print(names(dataset))
@@ -17,26 +17,19 @@ result <- predict(linearMod,a)
 
 #without using predefined function
 
-lin_reg <- function(x, y, test) {
-  x_bar = mean(x)
-  y_bar = mean(y)
-  X = x - x_bar
-  Y = y - y_bar
+lr <- function(x, y, test) {
+  x_mean = mean(x)
+  y_mean = mean(y)
+  X = x - x_mean
+  Y = y - y_mean
   
-  B1 = sum(X * Y) / sum(X**2)
-  B0 = y_bar - B1 * x_bar
+  B1 = sum(X * Y)/ sum(X**2)
+  B0 = y_mean - B1 * x_mean
   
   y_hat = B0 + B1 * x
   
-  rss = sum( (y - y_hat) ** 2 )
-  tss = sum(Y**2)
-  
-  R_squared = 1 - rss/tss
-  
-  RSE = sqrt(rss / (length(x) - 2))
-  
   corr = sum (X * Y) / sqrt( sum(X**2) *  sum(Y**2) )
-  cat(R_squared, '\n', B0 + B1 * test, '\n', RSE, '\n', corr)
+  cat(B0 + B1 * test, '\n', corr)
 }
 
-lin_reg(dataset[,2], dataset[,5], c(200,100))
+lr(dataset[,2], dataset[,5], c(200,100))
